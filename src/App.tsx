@@ -3,40 +3,64 @@ import './App.css';
 import * as React from 'react';
 import { Component } from 'react';
 
-import logo from './logo.svg';
+type Monster = {
+  name: string;
+  id: string;
+};
 
+type Event = {
+  target: {
+    value: string;
+  };
+};
 class App extends Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      name: 'jason',
+      monsters: [],
+      searchField: '',
     };
   }
 
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(users => {
+        this.setState(() => {
+          return { monsters: users };
+        });
+      })
+      .catch(() => {
+        // eslint-disable-next-line no-console
+        console.log(this.state);
+      });
+  }
+
+  onSearchChange = (event: Event) => {
+    const searchField = event.target.value.toLocaleLowerCase();
+    this.setState(() => {
+      return { searchField };
+    });
+  };
+
   render() {
+    const { monsters, searchField } = this.state;
+    const { onSearchChange } = this;
+
+    const filteredMonsters = monsters.filter((monster: Monster) => {
+      return monster.name.toLocaleLowerCase().includes(searchField);
+    });
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Hi {this.state.name}</p>
-          <button
-            onClick={() => {
-              this.setState(
-                () => {
-                  return {
-                    name: { firstName: 'jason', lastName: 'green' },
-                  };
-                },
-                () => {
-                  // eslint-disable-next-line no-console
-                  console.log(this.state);
-                },
-              );
-            }}
-          >
-            Change Name
-          </button>
-        </header>
+        <input className={'search-box'} type={'search'} placeholder={'search monsters'} onChange={onSearchChange} />
+        {filteredMonsters.map((monster: Monster) => {
+          return (
+            <div key={monster.id}>
+              <h1>{monster.name}</h1>
+            </div>
+          );
+        })}
       </div>
     );
   }
