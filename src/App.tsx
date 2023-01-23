@@ -3,10 +3,9 @@ import './App.css';
 import * as React from 'react';
 import { Component } from 'react';
 
-type Monster = {
-  name: string;
-  id: string;
-};
+import CardList from './components/card-list/card-list.component';
+import { Monster } from './components/card-list/types';
+import SearchBox from './components/search-box/search-box.component';
 
 type Event = {
   target: {
@@ -54,6 +53,8 @@ class App extends Component<any, any> {
     return (
       <div className="App">
         <input className={'search-box'} type={'search'} placeholder={'search monsters'} onChange={onSearchChange} />
+        <SearchBox />
+        <CardList monsters={filteredMonsters} />
         {filteredMonsters.map((monster: Monster) => {
           return (
             <div key={monster.id}>
