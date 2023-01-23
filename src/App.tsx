@@ -4,14 +4,10 @@ import * as React from 'react';
 import { Component } from 'react';
 
 import CardList from './components/card-list/card-list.component';
-import { Monster } from './components/card-list/types';
+import { IMonster } from './components/card-list/types';
 import SearchBox from './components/search-box/search-box.component';
+import { IEvent } from './types';
 
-type Event = {
-  target: {
-    value: string;
-  };
-};
 class App extends Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -35,7 +31,7 @@ class App extends Component<any, any> {
       });
   }
 
-  onSearchChange = (event: Event) => {
+  onSearchChange = (event: IEvent) => {
     const searchField = event.target.value.toLocaleLowerCase();
     this.setState(() => {
       return { searchField };
@@ -46,16 +42,15 @@ class App extends Component<any, any> {
     const { monsters, searchField } = this.state;
     const { onSearchChange } = this;
 
-    const filteredMonsters = monsters.filter((monster: Monster) => {
+    const filteredMonsters = monsters.filter((monster: IMonster) => {
       return monster.name.toLocaleLowerCase().includes(searchField);
     });
 
     return (
       <div className="App">
-        <input className={'search-box'} type={'search'} placeholder={'search monsters'} onChange={onSearchChange} />
-        <SearchBox />
+        <SearchBox onChangeHandler={onSearchChange} placeholder={'Search Monsters'} className={'search-box'} />
         <CardList monsters={filteredMonsters} />
-        {filteredMonsters.map((monster: Monster) => {
+        {filteredMonsters.map((monster: IMonster) => {
           return (
             <div key={monster.id}>
               <h1>{monster.name}</h1>

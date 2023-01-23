@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
-class SearchBox extends Component {
+import { ISearchBox } from '../card-list/types';
+
+class SearchBox extends Component<ISearchBox> {
   render() {
+    const { onChangeHandler, placeholder, className } = this.props;
     return (
       <div>
-        <h1>Search Box</h1>
+        <input className={className} type={'search'} placeholder={placeholder} onChange={onChangeHandler} />
       </div>
     );
   }

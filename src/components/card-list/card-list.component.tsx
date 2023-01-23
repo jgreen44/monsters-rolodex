@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import { Monster, MonsterProps } from './types';
+import { ICardList, IMonster } from './types';
 
-class CardList extends Component<MonsterProps> {
+class CardList extends Component<ICardList> {
   render() {
     const { monsters } = this.props;
     return (
       <div>
-        {monsters.map((monster: Monster) => (
+        {monsters.map((monster: IMonster) => (
           <h1 key={monster.id}>{monster.name}</h1>
         ))}
       </div>

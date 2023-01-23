@@ -1,8 +1,16 @@
-export type Monster = {
+import { IEvent } from '../../types';
+
+export interface IMonster {
   name: string;
   id: string;
-};
+}
 
-export interface MonsterProps {
-  monsters: Array<Monster>;
+export interface ICardList {
+  monsters: Array<IMonster>;
+}
+
+export interface ISearchBox {
+  onChangeHandler: (event: IEvent) => void;
+  placeholder: string;
+  className: string;
 }
