@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { ISearchBox } from '../card-list/types';
+import { ISearchBox } from './types';
 
 class SearchBox extends Component<ISearchBox> {
   render() {

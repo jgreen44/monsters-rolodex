@@ -8,9 +8,3 @@ export interface IMonster {
 export interface ICardList {
   monsters: Array<IMonster>;
 }
-
-export interface ISearchBox {
-  onChangeHandler: (event: IEvent) => void;
-  placeholder: string;
-  className: string;
-}
