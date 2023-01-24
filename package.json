@@ -1,6 +1,7 @@
 {
   "name": "monsters-rolodex",
   "version": "0.1.0",
+  "homepage": "https://jgreen44.github.io/monsters-rolodex",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -17,6 +18,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -54,6 +57,7 @@
     "eslint-plugin-react": "^7.32.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^9.0.0",
+    "gh-pages": "^5.0.0",
     "prettier": "^2.8.3"
   }
 }
