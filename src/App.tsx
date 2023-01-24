@@ -26,7 +26,7 @@ const App = () => {
     setFilteredMonsters(newFilteredMonsters);
   }, [monsters, searchField]);
   const onSearchChange = (event: IEvent) => {
-    setSearchField(event.target.value.toLowerCase);
+    setSearchField(event.target.value.toLowerCase());
   };
 
   return (
