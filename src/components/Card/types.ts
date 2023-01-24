@@ -1,9 +1,9 @@
-export interface IMonster {
-  id: number;
+export interface IMonsterData {
+  id: string;
   name: string;
-  username: string;
+  username?: string;
   email: string;
-  address: {
+  address?: {
     street: string;
     suite: string;
     city: string;
@@ -14,8 +14,8 @@ export interface IMonster {
     };
   };
   phone: string;
-  website: string;
-  company: {
+  website?: string;
+  company?: {
     name: string;
     catchPhrase: string;
     bs: string;

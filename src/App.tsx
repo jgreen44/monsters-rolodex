@@ -3,9 +3,9 @@ import './App.css';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 
-import { IMonster } from './components/card/types';
-import { CardList } from './components/card-list';
-import { SearchBox } from './components/search-box';
+import { IMonsterData } from './components/Card/types';
+import { CardList } from './components/CardList';
+import { SearchBox } from './components/SearchBox';
 import { IEvent } from './types';
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const newFilteredMonsters = monsters.filter((monster: IMonster) => {
+    const newFilteredMonsters = monsters.filter((monster: IMonsterData) => {
       return monster.name.toLowerCase().includes(searchField.toLowerCase());
     });
     setFilteredMonsters(newFilteredMonsters);
