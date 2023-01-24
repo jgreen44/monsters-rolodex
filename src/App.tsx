@@ -3,8 +3,8 @@ import './App.css';
 import * as React from 'react';
 import { Component } from 'react';
 
+import { IMonster } from './components/card/types';
 import CardList from './components/card-list/card-list.component';
-import { IMonster } from './components/card-list/types';
 import SearchBox from './components/search-box/search-box.component';
 import { IEvent } from './types';
 
@@ -18,6 +18,8 @@ class App extends Component<any, any> {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line no-console
+    console.log('componentDidMount');
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(res => res.json())
       .then(users => {
@@ -48,7 +50,7 @@ class App extends Component<any, any> {
 
     return (
       <div className="App">
-        <SearchBox onChangeHandler={onSearchChange} placeholder={'Search Monsters'} className={'search-box'} />
+        <SearchBox onChangeHandler={onSearchChange} placeholder={'Search Monsters'} className={'monsters-search-box'} />
         <CardList monsters={filteredMonsters} />
         {filteredMonsters.map((monster: IMonster) => {
           return (
