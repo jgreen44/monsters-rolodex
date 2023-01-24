@@ -13,3 +13,11 @@ body {
   );
   text-align: center;
 }
+
+.app-title {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 150px;
+  color: #0ccac4;
+  font-family: 'Bigelow Rules', serif;
+}

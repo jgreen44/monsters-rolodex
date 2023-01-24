@@ -22,22 +22,11 @@ class App extends Component<any, any> {
     console.log('componentDidMount');
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(res => res.json())
-      .then(users => {
-        this.setState(() => {
-          return { monsters: users };
-        });
-      })
-      .catch(() => {
-        // eslint-disable-next-line no-console
-        console.log(this.state);
-      });
+      .then(users => this.setState({ monsters: users }));
   }
 
   onSearchChange = (event: IEvent) => {
-    const searchField = event.target.value.toLocaleLowerCase();
-    this.setState(() => {
-      return { searchField };
-    });
+    this.setState({ searchField: event.target.value });
   };
 
   render() {
@@ -45,20 +34,14 @@ class App extends Component<any, any> {
     const { onSearchChange } = this;
 
     const filteredMonsters = monsters.filter((monster: IMonster) => {
-      return monster.name.toLocaleLowerCase().includes(searchField);
+      return monster.name.toLowerCase().includes(searchField.toLowerCase());
     });
 
     return (
       <div className="App">
+        <h1 className={'app-title'}>Monster's Rolodex</h1>
         <SearchBox onChangeHandler={onSearchChange} placeholder={'Search Monsters'} className={'monsters-search-box'} />
         <CardList monsters={filteredMonsters} />
-        {filteredMonsters.map((monster: IMonster) => {
-          return (
-            <div key={monster.id}>
-              <h1>{monster.name}</h1>
-            </div>
-          );
-        })}
       </div>
     );
   }
