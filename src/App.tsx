@@ -4,8 +4,8 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 
 import { IMonster } from './components/card/types';
-import CardList from './components/card-list/card-list.component';
-import SearchBox from './components/search-box/search-box.component';
+import { CardList } from './components/card-list';
+import { SearchBox } from './components/search-box';
 import { IEvent } from './types';
 
 const App = () => {

@@ -1,20 +1,18 @@
 import './card.styles.css';
 
-import React, { Component } from 'react';
+import React from 'react';
 
 import { IMonster } from './types';
 
-class Card extends Component<IMonster> {
-  render() {
-    const { name, email, id } = this.props;
-    return (
-      <div className={'card-container'} key={id}>
-        <img alt={`monster ${name}`} src={`https://robohash.org/${id}?set=set2&size=180x180`} />
-        <h2>{name}</h2>
-        <h2>{email}</h2>
-      </div>
-    );
-  }
-}
+export const Card = ({ id, name, email, phone }: IMonster) => {
+  return (
+    <div className={'card-container'} key={id}>
+      <img alt={`monster ${name}`} src={`https://robohash.org/${id}?set=set2&size=180x180`} />
+      <h2>{name}</h2>
+      <h2>{email}</h2>
+      <h2>{phone}</h2>
+    </div>
+  );
+};
 
-export default Card;
+Card.displayName = 'Card';
